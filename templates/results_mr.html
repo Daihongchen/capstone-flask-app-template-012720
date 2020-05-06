@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>First Flask App Results</title>
+    <link rel="stylesheet" media="screen" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="container">
+          <h1 class="display-3", style="color:goldenrod; text-align:center;" >Movies & TV Recommended for You</h1>
+          <p>
+            <br>
+            {% for index, movie in recommend_movies.iterrows() %}
+                <p><a href="{{ movie['Links'] }}">{{ movie["Title"] }}</a></p>
+            {% endfor %}
+            <br>
+            {{ recommend_movies[['Title','Overall_Rating', 'Category', 'Price']].to_html(justify='center', classes = 'table  table-striped table-hover table-bordered table-sm')|safe }}
+            
+            <br>
+            {{ recommend_movies[['Description']].to_html(justify='center', classes = 'table  table-striped table-hover table-bordered table-sm')|safe }}
+            <br>
+            <a href="/">Go back home</a>
+            <br>
+            <br>
+          </p>
+            <img src="{{ url_for('static', filename='gip.gif') }}" alt="" style="width:520px;height:520px;border:0;" class="centerImage">
+            <br>
+            <!-- <img src="/static/movies.png" alt="HTML5 Icon" width="1200" height="400" class ='centerImage'> -->
+        </div>
+    </div>
+</body>
+</html>

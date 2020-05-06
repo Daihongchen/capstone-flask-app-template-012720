@@ -1,26 +1,26 @@
 from flask import Flask, send_from_directory, render_template, request, abort
 from waitress import serve
-from src.models.wine_predictor import predict_wine
-from src.utils import validate_input
+from src.models.movie_recommend import recommender
+from src.utils_mr import validate_input
 
 app = Flask(__name__, static_url_path="/static")
 
 @app.route("/")
 def index():
     """Return the main page."""
-    return send_from_directory("static", "index.html")
+    return send_from_directory("static", "index_mr.html")
 
 @app.route("/get_results", methods=["POST"])
 def get_results():
-    """ Predict the class of wine based on the inputs. """
+    """ Recommend the movies to a user by input the userID. """
     data = request.form
     print(data)
 
     test_value, errors = validate_input(data)
 
     if not errors:
-        predicted_class = predict_wine(test_value)
-        return render_template("results.html", predicted_class=predicted_class)
+        recommend_movies = recommender(test_value)
+        return render_template("results_mr.html", recommend_movies=recommend_movies)
     else:
         return abort(400, errors)
 
