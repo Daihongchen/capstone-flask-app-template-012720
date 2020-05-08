@@ -29,3 +29,4 @@ export FLASK_ENV=production
 python app.py
 ```
 ## use sudo python3 app.py in the aws 
+## deployment lesson tmux. first, while terminal open, can you open the public website. second, use tmux, does not need to keep terminal open. 
