@@ -28,3 +28,4 @@ To run in a production environment (used for deployment, but test it out locally
 export FLASK_ENV=production
 python app.py
 ```
+## use sudo python3 app.py in the aws 
