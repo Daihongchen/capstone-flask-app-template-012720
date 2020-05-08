@@ -26,7 +26,7 @@ def recommender(test_value):
     
     predictions = model_mr.predict([user, movie_data])
     predictions = np.array([a[0] for a in predictions])
-    recommended_movie_ids = (-predictions).argsort()[:5]
+    recommended_movie_ids = (-predictions).argsort()[:15]
 
     recommend = data_mr[data_mr['movie'].isin(recommended_movie_ids)]
     recommend = recommend[[
