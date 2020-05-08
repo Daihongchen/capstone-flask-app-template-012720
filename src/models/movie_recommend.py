@@ -4,8 +4,7 @@ from tensorflow.keras.models import model_from_json
 from tensorflow import keras
 import pandas as pd 
 import numpy as np
-import json
-import json_config
+
 pd.set_option('display.float_format', '{:.1f}'.format)
 
 def recommender(test_value):
